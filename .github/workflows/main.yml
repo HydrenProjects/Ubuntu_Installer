@@ -1,0 +1,21 @@
+name: Run Ubuntu Installer Script
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run installer script
+        run: bash <(curl -s https://raw.githubusercontent.com/HydrenProjects/Ubuntu_Installer/main/install.sh)
+
+      - name: Verify script execution
+        run: |
+          echo "Script has been executed"
+          # You can add more checks or commands here if needed
